@@ -1,0 +1,5 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+The best approach (for now) is to look at the [http://code.google.com/p/cjwizard/source/browse/trunk/src/org/ciscavate/cjwizard/WizardTest.java WizardTest] class in svn and see how it creates a simple wizard.  That class is well commented, and uses the core set of features in CJWizard.
