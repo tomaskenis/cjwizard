@@ -54,4 +54,32 @@ If you are using custom components, then either override !WizardPage.updateSetti
 
 === WizardListener ===
 
-So how do you know when the wizard is finished?
+So how do you know when the wizard is finished? The !WizardListener interface defines three methods that are invoked when common  wizard operations occurr:
+
+{{{
+   /**
+    * Invoked when the wizard changes to display a new page.
+    * 
+    * @param newPage  The new page displayed.
+    * @param path The list of WizardPages shown so far.
+    */
+   public void onPageChanged(WizardPage newPage, List<WizardPage> path);
+   
+   /**
+    * Invoked when the user clicks the Finish button.
+    * 
+    * @param path The list of WizardPages shown so far.
+    * @param settings The collection of settings gleaned during the wizard.
+    */
+   public void onFinished(List<WizardPage> path, WizardSettings settings);
+   
+   /**
+    * Invoked when the user clicks the Cancel button.
+    * 
+    * @param path The list of WizardPages shown so far.
+    * @param settings The collection of settings gleaned during the wizard.
+    */
+   public void onCanceled(List<WizardPage> path, WizardSettings settings);
+}}}
+
+By implementing this interface, and passing an instance of the object into the `WizardController.addWizardListener(listener)` method, you can act in response to the core wizard actions.  Generally `onFinished(...)` will be implemented to collect the critical information from the !WizardSettings object and flesh out a data structure that the rest of your application will work with.
