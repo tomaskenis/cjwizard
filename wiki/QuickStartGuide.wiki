@@ -22,7 +22,7 @@ WizardContainer is the widget that contains the wizard itsself, so your first st
 }}}
 
 
-=== PageFactory ===
+=== !PageFactory ===
 
 The !PageFactory interface defines the API that the !WizardContainer uses to retrieve pages for the dialog.  It has one method: `createPage(...)`:
 
@@ -47,12 +47,12 @@ public interface PageFactory {
 
 This gives you almost complete control over the wizards behavior -- based on the settings and the current location you can determine any flow you want.
 
-=== WizardPage ===
+=== !WizardPage ===
 The actual pages of questions or information in the Wizard are instances of !WizardPage.  This is another subclass of JPanel, along with some additional capabilities.  You will be creating a new implementation of !WizardPage for each page in your wizard (go figure).  In many cases, you don't need to do anything other than create the components you want to use, call `setName(someUniqueName)` on the input widgets, and then add them to the !WizardPage (it's easy to do this in the constructor).  !WizardPage listens to component events to see when widgets are added, and checks each component for a name.  The named components are saved, and when the page is done (eg: when the user clicks 'Next >') the components are queried for their values, which are stored in the current !WizardSettings object, keyed on the names of the components that those values were taken from.
 
-If you are using custom components, then either override !WizardPage.updateSettings(...)` or make your components implement `CustomWizardComponent.getValue()`
+If you are using custom components, then either override `!WizardPage.updateSettings(...)` or make your components implement `CustomWizardComponent.getValue()`
 
-=== WizardListener ===
+=== !WizardListener ===
 
 So how do you know when the wizard is finished? The !WizardListener interface defines three methods that are invoked when common  wizard operations occurr:
 
